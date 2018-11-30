@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        bool present[256];
+        int si=0,li=0,l=s.length(),curr=0,mx=0,i;
+        for(i=0;i<256;i++)
+        {
+            present[i]=false;
+        }
+        while(li<l)
+        {
+            int x = s[li],y=s[si];
+            if(present[x])
+            {
+                curr-=1;
+                present[y]=false;
+                si+=1;
+            }
+            else
+            {
+                curr+=1;
+                if(curr>mx)
+                {
+                    mx=curr;
+                }
+                present[x]=true;
+                li+=1;
+            }
+        }
+        return mx;
+    }
+};
