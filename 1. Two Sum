@@ -1,0 +1,16 @@
+# code in python3
+# code uses a dictionary and store last occurance of every character
+class Solution:
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        dct={}
+        for i in range(len(nums)):
+            dct[nums[i]]=i
+        for i in range(len(nums)):
+            if target-nums[i] in dct:
+                if dct[target-nums[i]]!=i:
+                    return [i,dct[target-nums[i]]]
