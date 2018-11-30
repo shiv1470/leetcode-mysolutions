@@ -1,0 +1,54 @@
+class Solution {
+public:
+    int myAtoi(string str) {
+        long int ans=0;
+        int i,j=0,k,l=str.length();
+        int sign=1;
+        for(i=0;i<l;i++)
+        {
+            if(str[i]==' ')
+            {
+                j++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        for(i=j;i<l;i++)
+        {
+            if(str[i]>='0' and str[i]<='9')
+            {
+                ans=ans*10 + (str[i]-'0');
+                if(sign==1)
+                {
+                    if(ans>INT_MAX)
+                    {
+                        return INT_MAX;
+                    }
+                }
+                else
+                {
+                    long int ans1=ans*sign;
+                    if(ans1<INT_MIN)
+                    {
+                        return INT_MIN;
+                    }
+                }
+            }
+            else if(str[i]=='+' and i==j)
+            {
+                
+            }
+            else if(str[i]=='-' and i==j)
+            {
+                sign=-1;
+            }
+            else
+            {
+                return ans*sign;
+            }
+        }
+        return ans*sign;
+    }
+};
