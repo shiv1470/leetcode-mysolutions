@@ -1,0 +1,18 @@
+class Solution:
+    def romanToInt(self, s):
+        roman={}
+        roman['I']=1
+        roman['V']=5
+        roman['X']=10
+        roman['L']=50
+        roman['C']=100
+        roman['D']=500
+        roman['M']=1000
+        prev=1000000000
+        ans=0
+        for i in s:
+            ans+=roman[i]
+            if(prev<roman[i]):
+                ans-=2*prev
+            prev=roman[i]
+        return ans
