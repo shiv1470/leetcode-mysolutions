@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(numRows==1)
+        {
+            return s;
+        }
+        int x ,i,j,l=s.length(),y,z=numRows;
+        x=2*(numRows-1);
+        string ans="";
+        for(i=0;i<z;i++)
+        { 
+            for(j=i;j<l;j+=x)
+            {
+                ans+=s[j];
+                if(i!=0 and i!=numRows-1)
+                {
+                    y=j+(numRows-i-1)*2;
+                    if(y<l)
+                    ans+=s[y];
+                }
+            }
+        }
+        return ans;
+    }
+};
