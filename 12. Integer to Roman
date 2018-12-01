@@ -1,0 +1,21 @@
+class Solution:
+    def intToRoman(self, num):
+        return self.romanDigit((num%10000)//1000,'M','N','B')+self.romanDigit((num%1000)//100,'C','D','M')+self.romanDigit((num%100)//10,'X','L','C')+self.romanDigit(num%10,'I','V','X')
+        
+        
+    def romanDigit(self , dig , one , five , ten):
+        if(dig==0):
+            return ""
+        elif(dig<=3):
+            return one*dig
+        elif(dig==4):
+            return one+five
+        elif(dig==5):
+            return five
+        elif(dig<=8):
+            return five+one*(dig-5)
+        elif(dig==9):
+            return one+ten
+        else:
+            return ten
+        
