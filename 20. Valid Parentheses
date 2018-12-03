@@ -1,0 +1,52 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack <char> stk;
+        int i,j,k,l=s.length();
+        for(i=0;i<l;i++)
+        {
+            switch(s[i])
+            {
+                case '(':
+                    stk.push('(');
+                    break;
+                case '{':
+                    stk.push('{');
+                    break;
+                case '[':
+                    stk.push('[');
+                    break;
+                case ')':
+                    if(stk.empty())
+                        return false;
+                    if(stk.top()=='(')
+                        stk.pop();
+                    else
+                        return false;
+                    break;
+                case '}':
+                    if(stk.empty())
+                        return false;
+                    if(stk.top()=='{')
+                        stk.pop();
+                    else
+                        return false;
+                    break;
+                case ']':
+                    if(stk.empty())
+                        return false;
+                    if(stk.top()=='[')
+                        stk.pop();
+                    else
+                        return false;
+                default:
+                    continue;
+            }
+        }
+        if(stk.empty())
+        {
+            return true;
+        }
+        return false;
+    }
+};
