@@ -1,0 +1,25 @@
+class Solution:
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        temp=['']
+        ans=[]
+        chars={}
+        chars['2']='abc'
+        chars['3']='def'
+        chars['4']='ghi'
+        chars['5']='jkl'
+        chars['6']='mno'
+        chars['7']='pqrs'
+        chars['8']='tuv'
+        chars['9']='wxyz'
+        for i in digits:
+            s=chars[i]
+            ans=[]
+            for j in temp:
+                for k in s:
+                    ans.append(j+k)
+            temp=ans
+        return ans
