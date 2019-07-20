@@ -9,17 +9,17 @@
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-        if(head==NULL)
+        if(head==NULL)  //Reached end of linked list
         {
-            return NULL;
+            return NULL;    
         }
-        ListNode *temp=head,*nx=head->next;
-        if(nx==NULL)
+        ListNode *temp=head,*nx=head->next;// temp variable used to swap and nxt variable used to store next node
+        if(nx==NULL)    // if no next node there is not need to swap
         {
-            return head;
+            return head;    
         }
-        temp->next=swapPairs(nx->next);
-        nx->next=temp;
+        temp->next=swapPairs(nx->next); // calling it recursively
+        nx->next=temp; // performing swap
         return nx;
     }
 };
